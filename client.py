@@ -1,5 +1,6 @@
 import socket
 import sys
+import utils_o
 
 # Creando socket TPC/IP
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,10 +16,11 @@ try:
             sock.sendall(lower_input.encode())
             break
         else:
-            sock.sendall(lower_input.encode())
-            upper_out = sock.recv(16)
-            out_str = upper_out.decode()
-            print(out_str)
+            #sock.sendall(lower_input.encode())
+            #upper_out = sock.recv(16)
+            #out_str = upper_out.decode()
+            #print(out_str)
+            print(utils_o.manage_package(lower_input, sock))
 finally:
     print('Adios servidor')
     sock.close()
